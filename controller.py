@@ -7,17 +7,19 @@ from minHeap import minHeapify, minHeapSort
 def main():
     size = int(sys.stdin.readline())
     almostHeap = size // 2
-    array = range(size)
+    # print([*range(10)])
+    array = [*range(size)]
     random.shuffle(array)
+    # print(array)
     type = sys.stdin.readline().strip()
     if type == 'max':
         for i in range(almostHeap -1, -1, -1):
             maxHeapify(array, i, size)
-        maxHeapSort(array)
+        array = maxHeapSort(array, size)
     elif type == 'min':
         for i in range(almostHeap -1, -1, -1):
             minHeapify(array, i)
-        minHeapSort(array, size)
+        array = minHeapSort(array, size)
     else:
         quit(1)
     print(array)
