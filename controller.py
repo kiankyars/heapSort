@@ -7,7 +7,8 @@ from minHeap import minHeapify, minHeapSort
 def main():
     size = int(sys.stdin.readline())
     almostHeap = size // 2
-    array = random.shuffle(range(size))
+    array = range(size)
+    random.shuffle(array)
     type = sys.stdin.readline().strip()
     if type == 'max':
         for i in range(almostHeap -1, -1, -1):
