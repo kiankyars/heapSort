@@ -7,7 +7,7 @@ Requires heap.py
 
 import heap, sys
 sys.path.append("..")
-from ..main.priorityQueue import priorityQueue
+from main.priorityQueue import priorityQueue
 
 class priority_queue(object):
     def __init__(self, a):
@@ -54,36 +54,36 @@ def test_pq():
     # on the keys in the heap, and access the data through the dict.
 
     a = [None, 4,1,7,9,3,10,14,8,2,16]
-    b = [None, 4,1,7,9,3,10,14,8,2,16]
+    b = []
     pq = priority_queue(a)
-    print_pq(pq)
+    print(pq.a)
     m = pq.extract_max()
     print('Extract max', m)
-    print_pq(pq)
+    print(pq.a)
     pq.increase_key(4, 17)
     print('increase_key(4, 17)')
-    print_pq(pq)
+    print(pq.a)
     pq.insert_key(15)
     print('insert_key(15)')
-    print_pq(pq)
+    print(pq.a)
     pq.decrease_key(2, 3)
     print('decrease_key(2, 3)')
-    print_pq(pq)
+    print(pq.a)
 
     pq = priorityQueue(b, len(b))
-    print_pq(pq)
+    print(pq.queue)
     m = pq.extractMax()
     print('Extract max', m)
-    print_pq(pq)
+    print(pq.queue)
     pq.increaseKey(4, 17)
     print('increase_key(4, 17)')
-    print_pq(pq)
+    print(pq.queue)
     pq.heapInsert(15)
     print('insert_key(15)')
-    print_pq(pq)
+    print(pq.queue)
     pq.decreaseKey(2, 3)
     print('decrease_key(2, 3)')
-    print_pq(pq)
+    print(pq.queue)
 
 if __name__ == '__main__':
     test_pq()

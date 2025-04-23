@@ -1,4 +1,4 @@
-from maxHeap import buildMaxHeap, maxHeapSort, maxHeapify
+from .maxHeap import buildMaxHeap, maxHeapify
 
 
 class priorityQueue:
@@ -7,7 +7,7 @@ class priorityQueue:
     '''
 
     def __init__(self, array, length):
-        buildMaxHeap(array)
+        buildMaxHeap(array, length)
         self.queue = array
         self.length = length
         self.front = 0
@@ -28,7 +28,8 @@ class priorityQueue:
         return self.queue[0]
 
     def extractMax(self):
-        self.queue[0], self.queue[self.length - 1] = self.queue[0], self.queue[self.length - 1]
+        self.queue[0], self.queue[self.length - 1] = self.queue[self.length - 1], self.queue[0]
+        self.length -= 1
         maxHeapify(self.queue, 0, self.length)
         return self.queue.pop()
 
@@ -40,9 +41,7 @@ class priorityQueue:
 
     def decreaseKey(self, i, key):
         self.queue[i] = key
-        while (self.leftChild(i) != None and self.queue[i] < self.queue[self.leftChild(i)]):
-            self.queue[i], self.queue[self.leftChild(i)] = self.queue[self.leftChild(i)], self.queue[i]
-            i = self.leftChild(i)
+        maxHeapify(self.queue, i, self.length)
     
     def removeKey(self, i):
         self.decreaseKey(i, -1)
@@ -52,4 +51,4 @@ class priorityQueue:
     def heapInsert(self, value):
         self.length += 1
         self.queue.append(None)
-        self.increaseKey(self.length, self.length - 1, value)
+        self.increaseKey(self.length - 1, value)
